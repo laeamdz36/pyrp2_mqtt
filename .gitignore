@@ -1,0 +1,80 @@
+.venv
+.idea
+weather.db
+/db_data
+.todo
+
+# Bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+.venv.bak/
+env.bak/
+
+# Archivos de configuración del entorno
+*.env
+.env.*
+
+# Archivos de logs
+*.log
+
+# Archivos de bases de datos locales o temporales
+*.sqlite3
+*.db
+
+# Archivos de configuración específicos del editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de pruebas
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+
+# Reportes de test/coverage
+coverage.xml
+nosetests.xml
+*.cover
+*.py,cover
+
+# Distribución
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Docker / Contenedores
+*.pid
+*.pid.lock
+
+# Archivos de Jupyter
+.ipynb_checkpoints
+
+# Archivos de herramientas como mypy, pylint, etc.
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Archivos de herramientas de documentación
+docs/_build/
+
+# Archivos de compilación de Cython o C++
+*.so
+*.pyd
+
+
+.env.influxdb2-admin-password
+.env.influxdb2-admin-token
+.env.influxdb2-admin-username
