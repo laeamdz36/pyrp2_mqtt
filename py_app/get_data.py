@@ -1,4 +1,5 @@
 """Module to read data from sensor RP"""
+import datetime as dt
 import bme280
 import smbus2
 
@@ -29,13 +30,5 @@ def read_sensor():
             "temperature": temperature, }
 
 
-def _log_data(data):
-    """Log data in console"""
-
-    for meas, value in data.items():
-        print(meas, value, flush=True)
-
-
 if __name__ == "__main__":
     _data = read_sensor()
-    _log_data(_data)
