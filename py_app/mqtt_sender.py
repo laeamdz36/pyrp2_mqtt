@@ -1,0 +1,67 @@
+"""Module to publish data with MQTT"""
+
+from time import sleep
+import paho.mqtt.client as mqtt
+from get_data import read_sensor
+
+BROKER = "192.168.68.109"
+PORT = 1883
+topic = "sensor2/temperatura"
+username = "mqtt_usr"
+password = "luismdz366"
+
+
+def load_topics(selector=None):
+    """Return topic selected"""
+
+    # build topics for each sensor
+    _topics = None
+    if selector is None:
+        _topic = "rp2/weather"
+        _names = ["temperature", "humidity", "pressure"]
+        _topics = {_name: {"topic": _top} for _name,
+                   _top in zip(_names, [f"{_topic}/{x}" for x in _names])}
+    return _topics
+
+
+def create_mqtt_client():
+    """Create MQTT client to connection"""
+
+    client = mqtt.Client()
+    client.username_pw_set(username, password)
+    client.connect(BROKER, PORT, 60)
+
+    return client
+
+
+# def read_sensor():
+#     """Dev"""
+
+#     return {"humidity": 50, "pressure": 51,
+#             "temperature": 50, }
+
+
+def main():
+    """Execute continous comm to broker"""
+
+    client = create_mqtt_client()
+    _topics = load_topics()
+    try:
+        while True:
+            data = read_sensor()
+            for sensor, value in data.items():
+                client.publish(_topics.get(sensor)["topic"], value)
+                print(
+                    f"Pub topic: {_topics.get(sensor)["topic"]}, val: {value}")
+            sleep(5)
+    except Exception as e:
+        print(f"ERROR: {e.args}")
+    finally:
+        pass
+        client.disconnect()
+
+
+if __name__ == "__main__":
+    # pub_topic()
+    # test topic builder
+    main()

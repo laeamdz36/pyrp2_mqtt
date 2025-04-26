@@ -1,0 +1,14 @@
+{
+    "temperature": {
+        "desc": "Temperature sensor in °C",
+        "topic": "bme280/temperature"
+    },
+    "humidity": {
+        "desc": "Humidity relative sensor in %",
+        "topic": "bme280/humidity"
+    },
+    "pressure": {
+        "desc": "Relative pressure in hPa",
+        "topic": "bme280/pressure"
+    }
+}
