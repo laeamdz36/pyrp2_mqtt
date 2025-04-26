@@ -27,17 +27,11 @@ def create_mqtt_client():
     """Create MQTT client to connection"""
 
     client = mqtt.Client()
+    client = mqtt.Client(client_id="rp2")
     client.username_pw_set(username, password)
     client.connect(BROKER, PORT, 60)
-
+    client.loop_start()
     return client
-
-
-# def read_sensor():
-#     """Dev"""
-
-#     return {"humidity": 50, "pressure": 51,
-#             "temperature": 50, }
 
 
 def main():
@@ -59,9 +53,6 @@ def main():
             sleep(5)
     except Exception as e:
         print(f"ERROR: {e.args}")
-    finally:
-        pass
-        client.disconnect()
 
 
 if __name__ == "__main__":
