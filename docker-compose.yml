@@ -13,3 +13,5 @@ services:
       - "/dev/i2c-2:/dev/i2c-2"
     cap_add:
       - SYS_RAWIO
+    volumes:
+      - /sys/class/thermal:/sys/class/thermal:ro
