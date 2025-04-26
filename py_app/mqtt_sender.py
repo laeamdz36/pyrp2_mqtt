@@ -49,7 +49,8 @@ def main():
         while True:
             data = read_sensor()
             cputemp = get_cpu_temp()
-            client.publish("rp2/system/cpu_temp", cputemp)
+            if cputemp:
+                client.publish("rp2/system/cpu_temp", cputemp)
             print(f"PUB: rp2/system/cpu_temp - {cputemp}")
             for sensor, value in data.items():
                 client.publish(_topics.get(sensor)["topic"], value)

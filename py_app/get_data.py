@@ -7,10 +7,14 @@ from gpiozero import CPUTemperature
 
 def get_cpu_temp():
     """Reading temperature from CPU"""
-
-    cpu = CPUTemperature()
-    print(f"Current temperature: {cpu.temperature}")
-    return round(float(cpu.temperature), 2)
+    cpu = None
+    try:
+        cpu = CPUTemperature()
+        print(f"Current temperature: {cpu.temperature}")
+        cpu = round(float(cpu.temperature), 2)
+    except Exception as e:
+        print(f"Error: {e.args}")
+    return cpu
 
 
 def read_sensor():
