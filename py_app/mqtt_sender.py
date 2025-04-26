@@ -2,11 +2,10 @@
 
 from time import sleep
 import paho.mqtt.client as mqtt
-from get_data import read_sensor
+from get_data import read_sensor, get_cpu_temp
 
 BROKER = "192.168.68.109"
 PORT = 1883
-topic = "sensor2/temperatura"
 username = "mqtt_usr"
 password = "luismdz366"
 
@@ -49,6 +48,9 @@ def main():
     try:
         while True:
             data = read_sensor()
+            cputemp = get_cpu_temp()
+            client.publish("rp2/system/cpu_temp", cputemp)
+            print(f"PUB: rp2/system/cpu_temp - {cputemp}")
             for sensor, value in data.items():
                 client.publish(_topics.get(sensor)["topic"], value)
                 print(

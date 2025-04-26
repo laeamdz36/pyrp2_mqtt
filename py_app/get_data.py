@@ -2,12 +2,21 @@
 import datetime as dt
 import bme280
 import smbus2
+from gpiozero import CPUTemperature
+
+
+def get_cpu_temp():
+    """Reading temperature from CPU"""
+
+    cpu = CPUTemperature()
+    print(f"Current temperature: {cpu.temperature}")
+    return round(float(cpu.temperature), 2)
 
 
 def read_sensor():
     """Read sensor BME 280 in  76"""
     port = 1
-    address = 0x76  # Adafruit BME280 address. Other BME280s may be different
+    address = 0x76
     bus = smbus2.SMBus(port)
 
     bme280.load_calibration_params(bus, address)
