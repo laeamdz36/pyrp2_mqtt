@@ -3,6 +3,10 @@ import datetime as dt
 import bme280
 import smbus2
 from gpiozero import CPUTemperature
+from gpiozero.pins.native import NativeFactory
+from gpiozero import Device
+
+Device.pin_factory = NativeFactory()
 
 
 def get_cpu_temp():

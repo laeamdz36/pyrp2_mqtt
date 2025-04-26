@@ -11,6 +11,8 @@ services:
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
       - "/dev/i2c-2:/dev/i2c-2"
+      - /dev/gpiomem:/dev/gpiomem
+      - /dev/vcio:/dev/vcio
     cap_add:
       - SYS_RAWIO
     volumes:
