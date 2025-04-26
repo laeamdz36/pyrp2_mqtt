@@ -1,14 +1,15 @@
 name: py_mqtt
 
 services:
-  build:
-    context: ./py_app
-    dockerfile: dockerfile.pymqtt
-  image: py_weather_mqtt:1.0.0
-  container_name: rp2_mqtt
-  restart: always
-  devices:
-    - "/dev/i2c-1:/dev/i2c-1"
-    - "/dev/i2c-2:/dev/i2c-2"
-  cap_add:
-    - SYS_RAWIO
+  mqtt_py:
+    build:
+      context: ./py_app
+      dockerfile: dockerfile.pymqtt
+    image: py_weather_mqtt:1.0.0
+    container_name: rp2_mqtt
+    restart: always
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+      - "/dev/i2c-2:/dev/i2c-2"
+    cap_add:
+      - SYS_RAWIO
